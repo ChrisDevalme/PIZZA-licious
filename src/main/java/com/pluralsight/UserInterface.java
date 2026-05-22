@@ -47,10 +47,6 @@ public class UserInterface {
                     "Your choice:");
 
             String userChoice = scanner.nextLine();
-            if (!userChoice.equals("1") && !userChoice.equals("0")) {
-                System.out.println("Invalid input.");
-                continue;
-            }
 
             switch (userChoice) {
                 case "1":
@@ -58,6 +54,8 @@ public class UserInterface {
                     break;
                 case "0":
                     quit = true;
+                default:
+                    System.out.println("\nInvalid input. Please enter 1 or 0.\n");
             }
         }
     }
@@ -72,56 +70,69 @@ public class UserInterface {
                             " 2) Add Drink\n" +
                             " 3) Add Garlic Knots\n" +
                             " 4) Checkout\n" +
-                            " 5) Cancel Order\n" +
+                            " 0) Cancel Order\n" +
                             "Your choice:"
             );
             String userChoice = scanner.nextLine();
             if (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3") && !userChoice.equals("4")
-            && !userChoice.equals("5")) {
+            && !userChoice.equals("0")) {
                 System.out.println("Invalid input.");
                 continue;
             };
 
             switch (userChoice){
                 case "1":
-                    processAddPizza(currentOrder);
+                    processAddPizza();
                     break;
                 case "2":
-                    processAddDrink(currentOrder);
+                    processAddDrink();
                     break;
                 case "3":
-                    processAddGarlicKnots(currentOrder);
+                    processAddGarlicKnots();
                     break;
                 case "4":
-                    processCheckout(currentOrder);
+                    processCheckout();
                     break;
-                case "5":
+                case "0":
                     ordering = false;
                     cancelOrder();
                     break;
+                default:
+                    System.out.println("Invalid input. Please enter 0-4.");
             }
         }
     }
-    public void processAddPizza(Order currentOrder){
+    public void processAddPizza(){
         System.out.println("Adding pizza!");
     }
-    public void processAddDrink(Order currentOrder) {
+    public void processAddDrink() {
         System.out.println("Adding Drink!");
     }
-    public void processAddGarlicKnots(Order currentOrder) {
+    public void processAddGarlicKnots() {
         System.out.println("Adding Garlic Knots!");
     }
-    public void processCheckout(Order currentOrder){
+    public void processCheckout(){
         System.out.println("Checking out!");
     }
 
     private void createNewOrder() {
         currentOrder = new Order();
+        priintOrder();
     }
 
     private void cancelOrder() {
         currentOrder = null;
         System.out.println("==============================================================");
         System.out.println("\nOrder canceled!\n");
+    }
+
+    public void priintOrder() {
+        if(!currentOrder.getItems().isEmpty()) {
+            System.out.println("======================= Order ======================= ");
+            currentOrder.getItems().forEach(System.out::println);
+        } else {
+            System.out.println("======================= Order ======================= ");
+            System.out.println("                      ( Emtpy )                         ");
+        }
     }
 }
