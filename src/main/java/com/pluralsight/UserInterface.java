@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import com.pluralsight.model.Order;
+import com.pluralsight.model.Pizza;
 import com.pluralsight.service.ReceiptService;
 
 import java.util.Scanner;
@@ -108,8 +109,25 @@ public class UserInterface {
     }
 
     public void processAddPizza(){
-        System.out.println("Adding pizza!");
+        System.out.println("\n  ┌─────────────────────────────┐");
+        System.out.println("  │     BUILD YOUR PIZZA 🍕     │");
+        System.out.println("  └─────────────────────────────┘\n");
+
+        Pizza pizza = new Pizza();
+
+        pizza.setSize(pickSize());
+        pizza.setCrust(pickCrust());
+//        pickMeats(pizza);
+//        pickCheeses(pizza);
+//        pickRegularToppings(pizza);
+//        pickSauces(pizza);
+//        pickSides(pizza);
+//        pizza.setStuffedCrust(pickStuffedCrust());
+
+        currentOrder.addItem(pizza);
+        System.out.println("\n  Pizza added to your order!\n");
     }
+
     public void processAddDrink() {
         System.out.println("Adding Drink!");
     }
@@ -138,5 +156,53 @@ public class UserInterface {
             System.out.println("======================= Order ======================= ");
             System.out.println("                      ( Emtpy )                         ");
         }
+    }
+
+    private String pickSize() {
+        System.out.println("  -[ SIZE ]----------------------------------");
+        System.out.println("  [1] Personal 8\"  — $8.50");
+        System.out.println("  [2] Medium  12\" — $12.00");
+        System.out.println("  [3] Large   16\" — $16.50");
+        System.out.print("  Your choice: ");
+        boolean ordering = true;
+
+        String choice = scanner.nextLine();
+
+        switch (choice) {
+            case "1":
+                choice = "8";
+                break;
+            case "2":
+                choice = "12";
+                break;
+            case "3":
+                choice = "16";
+                break;
+            default:
+                System.out.println("Invalid Choice, enter an entry between 1 - 3");
+        }
+        return choice;
+    }
+    private String pickCrust() {
+        System.out.println("\n  -[ CRUST ]----------------------------------");
+        System.out.println("  [1] Thin");
+        System.out.println("  [2] Regular");
+        System.out.println("  [3] Thick");
+        System.out.println("  [4] Cauliflower");
+        System.out.print("  Your choice: ");
+        String choice = scanner.nextLine();
+
+        switch (choice) {
+            case "1": choice = "Thin";
+            break;
+            case "2": choice = "Regular";
+            break;
+            case "3": choice = "Thick";
+            break;
+            case "4": choice = "Cauliflower";
+            break;
+            default:  System.out.println("Invalid Choice, enter an entry between 1 - 4");
+        }
+        return choice;
     }
 }
