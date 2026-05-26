@@ -110,13 +110,13 @@ public class UserInterface {
 
     public void processAddPizza(){
         System.out.println("\n  ┌─────────────────────────────┐");
-        System.out.println("  │     BUILD YOUR PIZZA 🍕     │");
-        System.out.println("  └─────────────────────────────┘\n");
+        System.out.println(  "        BUILD YOUR PIZZA 🍕      ");
+        System.out.println(  "  └─────────────────────────────┘\n");
 
         Pizza pizza = new Pizza();
 
-        pizza.setSize(pickSize());
-        pizza.setCrust(pickCrust());
+        pickPizzaSize(pizza);
+        pickPizzaCrust(pizza);
 //        pickMeats(pizza);
 //        pickCheeses(pizza);
 //        pickRegularToppings(pizza);
@@ -158,8 +158,8 @@ public class UserInterface {
         }
     }
 
-    private String pickSize() {
-        System.out.println("  -[ SIZE ]----------------------------------");
+    private String pickPizzaSize(Pizza pizza) {
+        System.out.println(" -----------------------[ SIZE ]-----------------------");
         System.out.println("  [1] Personal 8\"  — $8.50");
         System.out.println("  [2] Medium  12\" — $12.00");
         System.out.println("  [3] Large   16\" — $16.50");
@@ -168,40 +168,56 @@ public class UserInterface {
 
         String choice = scanner.nextLine();
 
-        switch (choice) {
-            case "1":
-                choice = "8";
-                break;
-            case "2":
-                choice = "12";
-                break;
-            case "3":
-                choice = "16";
-                break;
-            default:
-                System.out.println("Invalid Choice, enter an entry between 1 - 3");
+        while(ordering) {
+            switch (choice) {
+                case "1":
+                    pizza.setSize("8");
+                    ordering = false;
+                    break;
+                case "2":
+                    pizza.setSize("12");
+                    ordering = false;
+                    break;
+                case "3":
+                    pizza.setSize("16");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid Choice, enter an entry between 1 - 3");
+            }
         }
-        return choice;
+            return choice;
     }
-    private String pickCrust() {
-        System.out.println("\n  -[ CRUST ]----------------------------------");
+    private String pickPizzaCrust(Pizza pizza) {
+        System.out.println("\n -----------------------[ CRUST ]-----------------------");
         System.out.println("  [1] Thin");
         System.out.println("  [2] Regular");
         System.out.println("  [3] Thick");
         System.out.println("  [4] Cauliflower");
         System.out.print("  Your choice: ");
         String choice = scanner.nextLine();
+        boolean ordering = true;
 
-        switch (choice) {
-            case "1": choice = "Thin";
-            break;
-            case "2": choice = "Regular";
-            break;
-            case "3": choice = "Thick";
-            break;
-            case "4": choice = "Cauliflower";
-            break;
-            default:  System.out.println("Invalid Choice, enter an entry between 1 - 4");
+        while(ordering) {
+            switch (choice) {
+                case "1":
+                    pizza.setCrust("Thin");
+                    ordering = false;
+                    break;
+                case "2":
+                    pizza.setCrust("Regular");
+                    ordering = false;
+                    break;
+                case "3":
+                    pizza.setCrust("Thick");
+                    ordering = false;
+                    break;
+                case "4":
+                    pizza.setCrust("Cauliflower");
+                    ordering = false;
+                    break;
+                default: System.out.println("  Invalid choice. Please enter 1, 2, 3, or 4.");
+            }
         }
         return choice;
     }
