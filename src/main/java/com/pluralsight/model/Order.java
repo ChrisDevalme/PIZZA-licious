@@ -17,10 +17,21 @@ public class Order {
         items.add(orderItem);
     }
 
+    public void removeItem(int index) {
+        if(index > 0 && index < items.size()) {
+            System.out.println("Removing: " + items.get(index).toString() + " from order.");
+            items.remove(index);
+        }
+    }
+
     public List<OrderItem> getItems() { return items; }
 
     public double calculateTotal(){
-        return 0;
+        double total = 0;
+        for (OrderItem item : items) {
+            total += item.calculatePrice();
+        }
+        return total;
     }
 
 }

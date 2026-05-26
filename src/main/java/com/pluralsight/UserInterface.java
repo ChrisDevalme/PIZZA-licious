@@ -13,7 +13,6 @@ public class UserInterface {
     public UserInterface(){
         scanner = new Scanner(System.in);
         receiptService = new ReceiptService();
-
     }
 
     public void logo() {
@@ -64,15 +63,8 @@ public class UserInterface {
         createNewOrder();
         boolean ordering = true;
         while (ordering) {
-            System.out.println(
-                    "=====================  Order Menu =====================\n" +
-                            " 1) Add Pizza\n" +
-                            " 2) Add Drink\n" +
-                            " 3) Add Garlic Knots\n" +
-                            " 4) Checkout\n" +
-                            " 0) Cancel Order\n" +
-                            "Your choice:"
-            );
+            printOrder();
+            printOrderMenu();
             String userChoice = scanner.nextLine();
             if (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3") && !userChoice.equals("4")
             && !userChoice.equals("0")) {
@@ -102,6 +94,19 @@ public class UserInterface {
             }
         }
     }
+
+    private static void printOrderMenu() {
+        System.out.println(
+                "=====================  Order Menu =====================\n" +
+                        " 1) Add Pizza\n" +
+                        " 2) Add Drink\n" +
+                        " 3) Add Garlic Knots\n" +
+                        " 4) Checkout\n" +
+                        " 0) Cancel Order\n" +
+                        "Your choice:"
+        );
+    }
+
     public void processAddPizza(){
         System.out.println("Adding pizza!");
     }
@@ -117,7 +122,6 @@ public class UserInterface {
 
     private void createNewOrder() {
         currentOrder = new Order();
-        priintOrder();
     }
 
     private void cancelOrder() {
@@ -126,7 +130,7 @@ public class UserInterface {
         System.out.println("\nOrder canceled!\n");
     }
 
-    public void priintOrder() {
+    public void printOrder() {
         if(!currentOrder.getItems().isEmpty()) {
             System.out.println("======================= Order ======================= ");
             currentOrder.getItems().forEach(System.out::println);
