@@ -7,6 +7,7 @@ public class RegularTopping extends Topping{
 
     private static final List<RegularTopping> OPTIONS = new ArrayList<>();
 
+
     static {
         OPTIONS.add(new RegularTopping("Onions"));
         OPTIONS.add(new RegularTopping("Mushrooms"));
@@ -18,6 +19,8 @@ public class RegularTopping extends Topping{
         OPTIONS.add(new RegularTopping("Pineapple"));
         OPTIONS.add(new RegularTopping("Anchovies"));
     }
+
+    public static List<RegularTopping> getAll() { return OPTIONS; }
 
     public RegularTopping(String name) {
         super(name);

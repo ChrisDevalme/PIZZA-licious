@@ -36,8 +36,8 @@ public class Pizza implements OrderItem{
     public boolean isStuffedCrust() { return stuffedCrust; }
     public void setStuffedCrust(boolean isStuffedCrust) { this.stuffedCrust = isStuffedCrust; }
 
-    public void addTopping(Topping topping)      { toppings.add(topping); }
-    public List<Topping> getToppings()     { return toppings; }
+    public void addTopping(Topping topping) { toppings.add(topping); }
+    public List<Topping> getToppings() { return toppings; }
 
     @Override
     public double calculatePrice() {

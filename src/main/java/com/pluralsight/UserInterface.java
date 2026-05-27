@@ -2,9 +2,7 @@ package com.pluralsight;
 
 import com.pluralsight.model.Order;
 import com.pluralsight.model.Pizza;
-import com.pluralsight.model.topping.CheeseTopping;
-import com.pluralsight.model.topping.MeatTopping;
-import com.pluralsight.model.topping.PremiumTopping;
+import com.pluralsight.model.topping.*;
 import com.pluralsight.service.ReceiptService;
 
 import java.util.List;
@@ -118,13 +116,13 @@ public class UserInterface {
         pickPizzaCrust(pizza);
         pickPizzaMeats(pizza);
         pickPizzaCheese(pizza);
-//        pickRegularToppings(pizza);
-//        pickSauces(pizza);
-//        pickSides(pizza);
+        pickRegularToppings(pizza);
+        pickSauces(pizza);
+        pickSides(pizza);
 //        pizza.setStuffedCrust(pickStuffedCrust());
 
         currentOrder.addItem(pizza);
-        System.out.println("\n  Pizza added to your order!\n");
+        System.out.println("\nPizza added to your order!\n");
     }
 
     public void processAddDrink() {
@@ -157,12 +155,13 @@ public class UserInterface {
         }
     }
 
+    // Pizza Order Logic
     private void pickPizzaSize(Pizza pizza) {
         boolean ordering = true;
 
         while(ordering) {
             System.out.println(" -----------------------[ SIZE ]-----------------------");
-            System.out.println("[1] Personal 8\"  — $8.50");
+            System.out.println("[1] Personal 8\" — $8.50");
             System.out.println("[2] Medium  12\" — $12.00");
             System.out.println("[3] Large   16\" — $16.50");
             System.out.print("Your choice: ");
@@ -228,7 +227,7 @@ public class UserInterface {
 
         while(ordering) {
             System.out.println("\n -----------------------[ MEATS ]-----------------------");
-            System.out.println("[0] Skip Meats/Done adding Meats");
+            System.out.println("[0] Done adding Meats");
             System.out.println("[1] Pepperoni");
             System.out.println("[2] Sausage");
             System.out.println("[3] Ham");
@@ -284,7 +283,7 @@ public class UserInterface {
 
         while(ordering) {
             System.out.println("\n -----------------------[ CHEESES ]-----------------------");
-            System.out.println("[0] Skip Cheese/Done adding Cheese");
+            System.out.println("[0] Done adding Cheese");
             System.out.println("[1] Mozzarella");
             System.out.println("[2] Parmesan");
             System.out.println("[3] Ricotta");
@@ -324,6 +323,133 @@ public class UserInterface {
                     System.out.println("Invalid choice entry must be 0 - 6.\n");
             }
         }
+    }
+    private void pickRegularToppings(Pizza pizza) {
+        List<RegularTopping> options = RegularTopping.getAll();
+        boolean ordering = true;
+
+        while (ordering) {
+            System.out.println("\n -----------------------[ REGULAR TOPPINGS ]----------------------");
+            System.out.println("[0] Done adding Toppings");
+            System.out.println("[1] Onions");
+            System.out.println("[2] Mushrooms");
+            System.out.println("[3] Bell Peppers");
+            System.out.println("[4] Olives");
+            System.out.println("[5] Tomatoes");
+            System.out.println("[6] Spinach");
+            System.out.println("[7] Basil");
+            System.out.println("[8] Pineapple");
+            System.out.println("[9] Anchovies");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "0": ordering = false; break;
+                case "1": ordering = addFreeToppingPrompt(pizza, options.get(0));  break; // Onions
+                case "2": ordering = addFreeToppingPrompt(pizza, options.get(1));  break; // Mushrooms
+                case "3": ordering = addFreeToppingPrompt(pizza, options.get(2));  break; // Bell Peppers
+                case "4": ordering = addFreeToppingPrompt(pizza, options.get(3));  break; // Olives
+                case "5": ordering = addFreeToppingPrompt(pizza, options.get(4));  break; // Tomatoes
+                case "6": ordering = addFreeToppingPrompt(pizza, options.get(5));  break; // Spinach
+                case "7": ordering = addFreeToppingPrompt(pizza, options.get(6));  break; // Basil
+                case "8": ordering = addFreeToppingPrompt(pizza, options.get(7));  break; // Pineapple
+                case "9": ordering = addFreeToppingPrompt(pizza, options.get(8));  break; // Anchovies
+                default: System.out.println("  Invalid choice — try again.");
+            }
+        }
+    }
+    private void pickSauces(Pizza pizza) {
+        List<SauceTopping> options = SauceTopping.getAll();
+        boolean ordering = true;
+
+        while (ordering) {
+            System.out.println("\n -----------------------[ SAUCES ]----------------------");
+            System.out.println("[0] Done adding Sauces");
+            System.out.println("[1] Marinara");
+            System.out.println("[2] Alfredo");
+            System.out.println("[3] Pesto");
+            System.out.println("[4] BBQ");
+            System.out.println("[5] Buffalo");
+            System.out.println("[6] Olive Oil");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "0": ordering = false; break;
+                case "1": ordering = addFreeToppingPrompt(pizza, options.get(0)); break;
+                case "2": ordering = addFreeToppingPrompt(pizza, options.get(1)); break;
+                case "3": ordering = addFreeToppingPrompt(pizza, options.get(2)); break;
+                case "4": ordering = addFreeToppingPrompt(pizza, options.get(3)); break;
+                case "5": ordering = addFreeToppingPrompt(pizza, options.get(4)); break;
+                case "6": ordering = addFreeToppingPrompt(pizza, options.get(5)); break;
+                default: System.out.println("  Invalid choice — try again.");
+            }
+        }
+    }
+    private void pickSides(Pizza pizza) {
+        List<SideTopping> options = SideTopping.getAll();
+        boolean ordering = true;
+
+        while (ordering) {
+            System.out.println("\n -----------------------[ SIDES ]----------------------");
+            System.out.println("[0] Done adding Sides");
+            System.out.println("[1] Red Pepper");
+            System.out.println("[2] Parmesan");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "0": ordering = false; break;
+                case "1": ordering = addFreeToppingPrompt(pizza, options.get(0)); break;
+                case "2": ordering = addFreeToppingPrompt(pizza, options.get(1)); break;
+                default: System.out.println("Invalid choice — try again.");
+            }
+        }
+    }
+    private boolean addFreeToppingPrompt(Pizza pizza, Topping selected) {
+
+        boolean validExtra = false;
+        while (!validExtra) {
+            System.out.println("Extra " + selected.getName() + "? \n[1] Yes  \n[0] No");
+            System.out.print("Your choice: ");
+            String extraChoice = scanner.nextLine().trim();
+
+            switch (extraChoice) {
+                case "1":
+                    selected.setExtra(true);
+                    validExtra = true;
+                    break;
+                case "0":
+                    selected.setExtra(false);
+                    validExtra = true;
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter 1 or 0.");
+            }
+        }
+        pizza.addTopping(selected);
+        System.out.println("✓ Added: " + selected.getName() + (selected.isExtra() ? " (extra)" : " (single)") + " — free");
+
+
+        boolean validMore = false;
+        while (!validMore) {
+            System.out.println("\nAdd another? [1] Yes  [0] No");
+            System.out.print("Your choice: ");
+            String moreToppings = scanner.nextLine().trim();
+
+            switch (moreToppings) {
+                case "1":
+                    validMore = true;
+                    return true;
+                case "0":
+                    validMore = true;
+                    return false;
+                default:
+                    System.out.println("Invalid input. Please enter 1 or 0.");
+            }
+        }
+
+        return false;
     }
     private boolean addPremiumToppingExtraPrompt(Pizza pizza, PremiumTopping selected) {
         boolean validExtra = false;
