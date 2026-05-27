@@ -124,193 +124,6 @@ public class UserInterface {
         System.out.println("==============================================================");
     }
 
-
-
-    // Drink Logic
-    public void processAddDrink() {
-        Drink drink = new Drink();
-        pickDrinkSize(drink);
-        pickDrinkFlavor(drink);
-
-        currentOrder.addItem(drink);
-    }
-    public void pickDrinkSize(Drink drink) {
-        boolean ordering = true;
-
-        while (ordering) {
-
-            System.out.println(" -----------------------[ DRINKS ]-----------------------");
-            System.out.println("Select Size: ");
-            System.out.println("[1] Small");
-            System.out.println("[2] Medium");
-            System.out.println("[3] Large");
-            System.out.print("Your choice: ");
-            String choice = scanner.nextLine();
-
-            switch(choice){
-                case "1" :
-                    drink.setSize("Small");
-                    ordering = false;
-                    break;
-                case "2" :
-                    drink.setSize("Medium");
-                    ordering = false;
-                    break;
-                case "3" :
-                    drink.setSize("Large");
-                    ordering = false;
-                    break;
-                default:
-                    System.out.println("Invalid input. Enter a number between 1 - 3.");
-            }
-
-        }
-    }
-    public void pickDrinkFlavor(Drink drink) {
-        boolean ordering = true;
-
-        while (ordering) {
-
-            System.out.println(" -----------------------[ DRINK FLAVORS]-----------------------");
-            System.out.println("Select Flavor: ");
-            System.out.println("[0] Cancel");
-            System.out.println("[1] Water");
-            System.out.println("[2] Coke");
-            System.out.println("[3] Pepsi");
-            System.out.println("[4] Fanta");
-            System.out.println("[5] Dr.Pepper");
-            System.out.print("Your choice: ");
-            String choice = scanner.nextLine();
-
-            switch(choice){
-                case "0" :
-                    ordering = false;
-                    break;
-                case "1" :
-                    drink.setFlavor("Water");
-                    ordering = false;
-                    break;
-                case "2" :
-                    drink.setFlavor("Coke");
-                    ordering = false;
-                    break;
-                case "3" :
-                    drink.setFlavor("Pepsi");
-                    ordering = false;
-                    break;
-                case "4" :
-                    drink.setFlavor("Fanta");
-                    ordering = false;
-                    break;
-                case "5" :
-                    drink.setFlavor("Dr.Pepper");
-                    ordering = false;
-                    break;
-                default:
-                    System.out.println("Invalid input. Enter a number between 0 - 5.");
-            }
-
-        }
-
-    }
-
-
-    public void processAddGarlicKnots() {
-        GarlicKnots gKnots = new GarlicKnots();
-        pickGarlicKnotsCount(gKnots);
-        pickGarlicKnotsFlavor(gKnots);
-        currentOrder.addItem(gKnots);
-    }
-    public void pickGarlicKnotsCount(GarlicKnots gKnots) {
-        boolean ordering = true;
-
-        while (ordering) {
-
-            System.out.println(" -----------------------[ DRINKS ]-----------------------");
-            System.out.println("Select Size: ");
-            System.out.println("[1] 6 Count");
-            System.out.println("[2] 12 Count");
-            System.out.println("[3] 16 Count");
-            System.out.print("Your choice: ");
-            String choice = scanner.nextLine();
-
-            switch(choice){
-                case "1" :
-                    gKnots.setCount("6");
-                    ordering = false;
-                    break;
-                case "2" :
-                    gKnots.setCount("12");
-                    ordering = false;
-                    break;
-                case "3" :
-                    gKnots.setCount("18");
-                    ordering = false;
-                    break;
-                default:
-                    System.out.println("Invalid input. Enter a number between 1 - 3.");
-            }
-        }
-    }
-    public void pickGarlicKnotsFlavor(GarlicKnots gKnot) {
-        boolean ordering = true;
-        while(ordering) {
-            System.out.println("-----------------------[ GARLIC KNOT FLAVORS ]-----------------------");
-            System.out.println("[0] Plain");
-            System.out.println("[1] Original Garlic Butter");
-            System.out.println("[2] Garlic Parmesan");
-            System.out.println("[3] Spicy Garlic");
-            System.out.println("[4] Garlic Ranch");
-            System.out.println("[5] Buffalo Garlic");
-            System.out.println("[6] Honey Garlic");
-            System.out.print("Your choice: ");
-
-            String choice = scanner.nextLine().trim();
-
-            switch (choice) {
-                case "0":
-                    ordering = false;
-                    gKnot.setFlavor("Plain");
-                    break;
-                case "1":
-                    gKnot.setFlavor("Original Garlic Butter");
-                    ordering = false;
-                    break;
-                case "2":
-                    gKnot.setFlavor("Garlic Parmesan");
-                    ordering = false;
-                    break;
-                case "3":
-                    gKnot.setFlavor("Spicy Garlic");
-                    ordering = false;
-                    break;
-                case "4":
-                    gKnot.setFlavor("Garlic Ranch");
-                    ordering = false;
-                    break;
-                case "5":
-                    gKnot.setFlavor("Buffalo Garlic");
-                    ordering = false;
-                    break;
-                case "6":
-                    gKnot.setFlavor("Honey Garlic");
-                    ordering = false;
-                    break;
-                default:
-                    System.out.println("  Invalid choice. Please enter 0-6.");
-            }
-
-        }
-
-    }
-
-
-    public void processCheckout(){
-        System.out.println("Checking out!");
-    }
-
-
-
     // Pizza Order Logic
     public void processAddPizza(){
         System.out.println("\n  ┌─────────────────────────────┐");
@@ -688,5 +501,189 @@ public class UserInterface {
         }
         return false;
     }
+
+
+    // Drink Order Logic
+    public void processAddDrink() {
+        Drink drink = new Drink();
+        pickDrinkSize(drink);
+        pickDrinkFlavor(drink);
+
+        currentOrder.addItem(drink);
+    }
+    public void pickDrinkSize(Drink drink) {
+        boolean ordering = true;
+
+        while (ordering) {
+
+            System.out.println(" -----------------------[ DRINKS ]-----------------------");
+            System.out.println("Select Size: ");
+            System.out.println("[1] Small");
+            System.out.println("[2] Medium");
+            System.out.println("[3] Large");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
+
+            switch(choice){
+                case "1" :
+                    drink.setSize("Small");
+                    ordering = false;
+                    break;
+                case "2" :
+                    drink.setSize("Medium");
+                    ordering = false;
+                    break;
+                case "3" :
+                    drink.setSize("Large");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Enter a number between 1 - 3.");
+            }
+
+        }
+    }
+    public void pickDrinkFlavor(Drink drink) {
+        boolean ordering = true;
+
+        while (ordering) {
+
+            System.out.println(" -----------------------[ DRINK FLAVORS]-----------------------");
+            System.out.println("Select Flavor: ");
+            System.out.println("[0] Cancel");
+            System.out.println("[1] Water");
+            System.out.println("[2] Coke");
+            System.out.println("[3] Pepsi");
+            System.out.println("[4] Fanta");
+            System.out.println("[5] Dr.Pepper");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
+
+            switch(choice){
+                case "0" :
+                    ordering = false;
+                    break;
+                case "1" :
+                    drink.setFlavor("Water");
+                    ordering = false;
+                    break;
+                case "2" :
+                    drink.setFlavor("Coke");
+                    ordering = false;
+                    break;
+                case "3" :
+                    drink.setFlavor("Pepsi");
+                    ordering = false;
+                    break;
+                case "4" :
+                    drink.setFlavor("Fanta");
+                    ordering = false;
+                    break;
+                case "5" :
+                    drink.setFlavor("Dr.Pepper");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Enter a number between 0 - 5.");
+            }
+
+        }
+
+    }
+
+    // Garlic Knot Order Logic
+    public void processAddGarlicKnots() {
+        GarlicKnots gKnots = new GarlicKnots();
+        pickGarlicKnotsCount(gKnots);
+        pickGarlicKnotsFlavor(gKnots);
+        currentOrder.addItem(gKnots);
+    }
+    public void pickGarlicKnotsCount(GarlicKnots gKnots) {
+        boolean ordering = true;
+
+        while (ordering) {
+
+            System.out.println(" -----------------------[ DRINKS ]-----------------------");
+            System.out.println("Select Size: ");
+            System.out.println("[1] 6 Count");
+            System.out.println("[2] 12 Count");
+            System.out.println("[3] 16 Count");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
+
+            switch(choice){
+                case "1" :
+                    gKnots.setCount("6");
+                    ordering = false;
+                    break;
+                case "2" :
+                    gKnots.setCount("12");
+                    ordering = false;
+                    break;
+                case "3" :
+                    gKnots.setCount("18");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Enter a number between 1 - 3.");
+            }
+        }
+    }
+    public void pickGarlicKnotsFlavor(GarlicKnots gKnot) {
+        boolean ordering = true;
+        while(ordering) {
+            System.out.println("-----------------------[ GARLIC KNOT FLAVORS ]-----------------------");
+            System.out.println("[0] Plain");
+            System.out.println("[1] Original Garlic Butter");
+            System.out.println("[2] Garlic Parmesan");
+            System.out.println("[3] Spicy Garlic");
+            System.out.println("[4] Garlic Ranch");
+            System.out.println("[5] Buffalo Garlic");
+            System.out.println("[6] Honey Garlic");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+
+            switch (choice) {
+                case "0":
+                    ordering = false;
+                    gKnot.setFlavor("Plain");
+                    break;
+                case "1":
+                    gKnot.setFlavor("Original Garlic Butter");
+                    ordering = false;
+                    break;
+                case "2":
+                    gKnot.setFlavor("Garlic Parmesan");
+                    ordering = false;
+                    break;
+                case "3":
+                    gKnot.setFlavor("Spicy Garlic");
+                    ordering = false;
+                    break;
+                case "4":
+                    gKnot.setFlavor("Garlic Ranch");
+                    ordering = false;
+                    break;
+                case "5":
+                    gKnot.setFlavor("Buffalo Garlic");
+                    ordering = false;
+                    break;
+                case "6":
+                    gKnot.setFlavor("Honey Garlic");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("  Invalid choice. Please enter 0-6.");
+            }
+
+        }
+
+    }
+
+    public void processCheckout(){
+        System.out.println("Checking out!");
+    }
+
 
 }
