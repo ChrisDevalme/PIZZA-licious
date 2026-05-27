@@ -2,8 +2,10 @@ package com.pluralsight;
 
 import com.pluralsight.model.Order;
 import com.pluralsight.model.Pizza;
+import com.pluralsight.model.topping.MeatTopping;
 import com.pluralsight.service.ReceiptService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -42,8 +44,8 @@ public class UserInterface {
         while (!quit){
             logo();
             System.out.println("=============== Welcome to PIZZALICIOUS ===============\n" +
-                    " 1) New Order\n" +
-                    " 0) Exit\n" +
+                    "[1] New Order\n" +
+                    "[0] Exit\n" +
                     "Your choice:");
 
             String userChoice = scanner.nextLine();
@@ -67,11 +69,6 @@ public class UserInterface {
             printOrder();
             printOrderMenu();
             String userChoice = scanner.nextLine();
-            if (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3") && !userChoice.equals("4")
-            && !userChoice.equals("0")) {
-                System.out.println("Invalid input.");
-                continue;
-            };
 
             switch (userChoice){
                 case "1":
@@ -99,11 +96,11 @@ public class UserInterface {
     private static void printOrderMenu() {
         System.out.println(
                 "=====================  Order Menu =====================\n" +
-                        " 1) Add Pizza\n" +
-                        " 2) Add Drink\n" +
-                        " 3) Add Garlic Knots\n" +
-                        " 4) Checkout\n" +
-                        " 0) Cancel Order\n" +
+                        "[1] Add Pizza\n" +
+                        "[2] Add Drink\n" +
+                        "[3] Add Garlic Knots\n" +
+                        "[4] Checkout\n" +
+                        "[0] Cancel Order\n" +
                         "Your choice:"
         );
     }
@@ -117,7 +114,7 @@ public class UserInterface {
 
         pickPizzaSize(pizza);
         pickPizzaCrust(pizza);
-//        pickMeats(pizza);
+        pickPizzaMeats(pizza);
 //        pickCheeses(pizza);
 //        pickRegularToppings(pizza);
 //        pickSauces(pizza);
@@ -158,18 +155,18 @@ public class UserInterface {
         }
     }
 
-    private String pickPizzaSize(Pizza pizza) {
-        System.out.println(" -----------------------[ SIZE ]-----------------------");
-        System.out.println("  [1] Personal 8\"  — $8.50");
-        System.out.println("  [2] Medium  12\" — $12.00");
-        System.out.println("  [3] Large   16\" — $16.50");
-        System.out.print("  Your choice: ");
+    private void pickPizzaSize(Pizza pizza) {
         boolean ordering = true;
 
-        String choice = scanner.nextLine();
-
         while(ordering) {
+            System.out.println(" -----------------------[ SIZE ]-----------------------");
+            System.out.println("[1] Personal 8\"  — $8.50");
+            System.out.println("[2] Medium  12\" — $12.00");
+            System.out.println("[3] Large   16\" — $16.50");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
             switch (choice) {
+
                 case "1":
                     pizza.setSize("8");
                     ordering = false;
@@ -184,21 +181,22 @@ public class UserInterface {
                     break;
                 default:
                     System.out.println("Invalid Choice, enter an entry between 1 - 3");
+                    break;
             }
         }
-            return choice;
     }
-    private String pickPizzaCrust(Pizza pizza) {
-        System.out.println("\n -----------------------[ CRUST ]-----------------------");
-        System.out.println("  [1] Thin");
-        System.out.println("  [2] Regular");
-        System.out.println("  [3] Thick");
-        System.out.println("  [4] Cauliflower");
-        System.out.print("  Your choice: ");
-        String choice = scanner.nextLine();
+    private void pickPizzaCrust(Pizza pizza) {
+
         boolean ordering = true;
 
         while(ordering) {
+            System.out.println("\n -----------------------[ CRUST ]-----------------------");
+            System.out.println("[1] Thin");
+            System.out.println("[2] Regular");
+            System.out.println("[3] Thick");
+            System.out.println("[4] Cauliflower");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
                     pizza.setCrust("Thin");
@@ -216,9 +214,108 @@ public class UserInterface {
                     pizza.setCrust("Cauliflower");
                     ordering = false;
                     break;
-                default: System.out.println("  Invalid choice. Please enter 1, 2, 3, or 4.");
+                default: System.out.println("Invalid choice. Please enter 1, 2, 3, or 4.");
             }
         }
-        return choice;
+    }
+    private void pickPizzaMeats(Pizza pizza) {
+        List<MeatTopping> meats = MeatTopping.getAll();
+
+        boolean ordering = true;
+        MeatTopping selected;
+
+        while(ordering) {
+            System.out.println("\n -----------------------[ MEATS ]-----------------------");
+            System.out.println("[0] Skip Meats/Done adding Meats");
+            System.out.println("[1] Pepperoni");
+            System.out.println("[2] Sausage");
+            System.out.println("[3] Ham");
+            System.out.println("[4] Bacon");
+            System.out.println("[5] Chicken");
+            System.out.println("[6] Meatball");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "0":
+                    return;
+
+                case "1":
+                    selected = meats.get(0); // Pepperoni
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                case "2":
+                    selected = meats.get(1); // Sausage
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                case "3":
+                    selected = meats.get(2); // Ham
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                case "4":
+                    selected = meats.get(3); // Bacon
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                case "5":
+                    selected = meats.get(4); // Chicken
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                case "6":
+                    selected = meats.get(5); // Meatball
+                    ordering = addMeatWithExtraPrompt(pizza, selected);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice entry must be 0 - 6.\n");
+            }
+        }
+    }
+
+    private boolean addMeatWithExtraPrompt(Pizza pizza, MeatTopping selected)
+    {
+        boolean validExtraMeat = false;
+        while (!validExtraMeat) {
+            System.out.println("Extra " + selected.getName() + "? \n [1] Yes  \n [0] No");
+            System.out.print("Your choice: ");
+            String extraChoice = scanner.nextLine();
+
+            switch (extraChoice) {
+                case "1":
+                    selected.setExtra(true);
+                    validExtraMeat = true;
+                    break;
+                case "0":
+                    selected.setExtra(false);
+                    validExtraMeat = true;
+                    break;
+                default:
+                    System.out.println("Invalid input. Please enter 1 or 0.\n");
+            }
+        }
+        pizza.addTopping(selected);
+        System.out.println("Added: " + selected.getName() + (selected.isExtra() ? " + (extra)" : " - (Single Serving)"));
+
+        boolean validMoreMeat = false;
+        while (!validMoreMeat) {
+            System.out.println("\nAdd another meat? \n [1] Yes  \n [0] No");
+            System.out.print("Your choice: ");
+            String moreMeat = scanner.nextLine().trim();
+
+            switch (moreMeat) {
+                case "1":
+                    validMoreMeat = true;
+                    return true;
+                case "0":
+                    validMoreMeat = true;
+                    return false;
+                default:
+                    System.out.println("Invalid input. Please enter 1 or 0.");
+            }
+        }
+        return false;
     }
 }

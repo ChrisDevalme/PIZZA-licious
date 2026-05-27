@@ -13,4 +13,11 @@ public abstract class Topping {
 
     public abstract boolean isPremium();
     public abstract double  getPrice(String size);
+
+    @Override
+    public String toString() {
+        return "Topping{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
