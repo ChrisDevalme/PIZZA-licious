@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import com.pluralsight.model.Drink;
+import com.pluralsight.model.GarlicKnots;
 import com.pluralsight.model.Order;
 import com.pluralsight.model.Pizza;
 import com.pluralsight.model.topping.*;
@@ -215,8 +216,95 @@ public class UserInterface {
 
 
     public void processAddGarlicKnots() {
-        System.out.println("Adding Garlic Knots!");
+        GarlicKnots gKnots = new GarlicKnots();
+        pickGarlicKnotsCount(gKnots);
+        pickGarlicKnotsFlavor(gKnots);
+        currentOrder.addItem(gKnots);
     }
+    public void pickGarlicKnotsCount(GarlicKnots gKnots) {
+        boolean ordering = true;
+
+        while (ordering) {
+
+            System.out.println(" -----------------------[ DRINKS ]-----------------------");
+            System.out.println("Select Size: ");
+            System.out.println("[1] 6 Count");
+            System.out.println("[2] 12 Count");
+            System.out.println("[3] 16 Count");
+            System.out.print("Your choice: ");
+            String choice = scanner.nextLine();
+
+            switch(choice){
+                case "1" :
+                    gKnots.setCount("6");
+                    ordering = false;
+                    break;
+                case "2" :
+                    gKnots.setCount("12");
+                    ordering = false;
+                    break;
+                case "3" :
+                    gKnots.setCount("18");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid input. Enter a number between 1 - 3.");
+            }
+        }
+    }
+    public void pickGarlicKnotsFlavor(GarlicKnots gKnot) {
+        boolean ordering = true;
+        while(ordering) {
+            System.out.println("-----------------------[ GARLIC KNOT FLAVORS ]-----------------------");
+            System.out.println("[0] Plain");
+            System.out.println("[1] Original Garlic Butter");
+            System.out.println("[2] Garlic Parmesan");
+            System.out.println("[3] Spicy Garlic");
+            System.out.println("[4] Garlic Ranch");
+            System.out.println("[5] Buffalo Garlic");
+            System.out.println("[6] Honey Garlic");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+
+            switch (choice) {
+                case "0":
+                    ordering = false;
+                    gKnot.setFlavor("Plain");
+                    break;
+                case "1":
+                    gKnot.setFlavor("Original Garlic Butter");
+                    ordering = false;
+                    break;
+                case "2":
+                    gKnot.setFlavor("Garlic Parmesan");
+                    ordering = false;
+                    break;
+                case "3":
+                    gKnot.setFlavor("Spicy Garlic");
+                    ordering = false;
+                    break;
+                case "4":
+                    gKnot.setFlavor("Garlic Ranch");
+                    ordering = false;
+                    break;
+                case "5":
+                    gKnot.setFlavor("Buffalo Garlic");
+                    ordering = false;
+                    break;
+                case "6":
+                    gKnot.setFlavor("Honey Garlic");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("  Invalid choice. Please enter 0-6.");
+            }
+
+        }
+
+    }
+
+
     public void processCheckout(){
         System.out.println("Checking out!");
     }
