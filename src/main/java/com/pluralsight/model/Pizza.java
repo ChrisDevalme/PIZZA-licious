@@ -69,11 +69,9 @@ public class Pizza implements OrderItem{
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "size='" + size + '\'' +
-                ", crust='" + crust + '\'' +
-                ", stuffedCrust=" + stuffedCrust +
-                ", toppings=" + toppings +
-                '}';
+        return String.format(
+                "🍕 Pizza | Size: %s\" | Crust: %s | Stuffed Crust: %s | Toppings: %s | Total: $%.2f",
+                size, crust, stuffedCrust ? "Yes" : "No", toppings, calculatePrice()
+        );
     }
 }

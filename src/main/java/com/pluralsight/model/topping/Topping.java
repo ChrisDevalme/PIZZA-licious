@@ -16,8 +16,6 @@ public abstract class Topping {
 
     @Override
     public String toString() {
-        return "Topping{" +
-                "name='" + name + '\'' +
-                '}';
+        return Character.toUpperCase(name.charAt(0)) + name.substring(1);
     }
 }
