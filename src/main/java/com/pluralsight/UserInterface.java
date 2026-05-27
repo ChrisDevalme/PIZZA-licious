@@ -62,6 +62,7 @@ public class UserInterface {
         }
     }
 
+    // Order Logic
     public void processNewOrder() {
         createNewOrder();
         boolean ordering = true;
@@ -92,7 +93,6 @@ public class UserInterface {
             }
         }
     }
-
     private static void printOrderMenu() {
         System.out.println(
                 "=====================  Order Menu =====================\n" +
@@ -104,7 +104,40 @@ public class UserInterface {
                         "Your choice:"
         );
     }
+    private void createNewOrder() {
+        currentOrder = new Order();
+    }
+    public void printOrder() {
+        if(!currentOrder.getItems().isEmpty()) {
+            System.out.println("======================= Order ======================= ");
+            currentOrder.getItems().forEach(System.out::println);
+        } else {
+            System.out.println("======================= Order ======================= ");
+            System.out.println("                      ( Emtpy )                         ");
+        }
+    }
+    private void cancelOrder() {
+        currentOrder = null;
+        System.out.println("\nOrder canceled!\n");
+        System.out.println("==============================================================");
+    }
 
+
+
+
+    public void processAddDrink() {
+
+    }
+    public void processAddGarlicKnots() {
+        System.out.println("Adding Garlic Knots!");
+    }
+    public void processCheckout(){
+        System.out.println("Checking out!");
+    }
+
+
+
+    // Pizza Order Logic
     public void processAddPizza(){
         System.out.println("\n  ┌─────────────────────────────┐");
         System.out.println(  "        BUILD YOUR PIZZA 🍕      ");
@@ -119,43 +152,11 @@ public class UserInterface {
         pickRegularToppings(pizza);
         pickSauces(pizza);
         pickSides(pizza);
-//        pizza.setStuffedCrust(pickStuffedCrust());
+        pickStuffedCrust(pizza);
 
         currentOrder.addItem(pizza);
         System.out.println("\nPizza added to your order!\n");
     }
-
-    public void processAddDrink() {
-        System.out.println("Adding Drink!");
-    }
-    public void processAddGarlicKnots() {
-        System.out.println("Adding Garlic Knots!");
-    }
-    public void processCheckout(){
-        System.out.println("Checking out!");
-    }
-
-    private void createNewOrder() {
-        currentOrder = new Order();
-    }
-
-    private void cancelOrder() {
-        currentOrder = null;
-        System.out.println("==============================================================");
-        System.out.println("\nOrder canceled!\n");
-    }
-
-    public void printOrder() {
-        if(!currentOrder.getItems().isEmpty()) {
-            System.out.println("======================= Order ======================= ");
-            currentOrder.getItems().forEach(System.out::println);
-        } else {
-            System.out.println("======================= Order ======================= ");
-            System.out.println("                      ( Emtpy )                         ");
-        }
-    }
-
-    // Pizza Order Logic
     private void pickPizzaSize(Pizza pizza) {
         boolean ordering = true;
 
@@ -403,6 +404,26 @@ public class UserInterface {
                 case "1": ordering = addFreeToppingPrompt(pizza, options.get(0)); break;
                 case "2": ordering = addFreeToppingPrompt(pizza, options.get(1)); break;
                 default: System.out.println("Invalid choice — try again.");
+            }
+        }
+    }
+    private void pickStuffedCrust(Pizza pizza) {
+        boolean ordering  = true;
+
+        while (ordering) {
+            System.out.println("\n -----------------------[ STUFFED CRUST ]----------------------");
+            System.out.println("Would you like to add stuffed crust? \n[1] Yes \n[0] No");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "0": ordering = false; break;
+                case "1":
+                    pizza.setStuffedCrust(true);
+                    System.out.println("✓ Added Stuffed Crust to Pizza");
+                    ordering = false;
+                    break;
+                default:
+                    System.out.println("Invalid Choice, enter 0 or 1.");
             }
         }
     }
