@@ -133,18 +133,19 @@ public class UserInterface {
 
         System.out.println("\n  ╔══════════════════════════════════════╗");
         System.out.println(  "  ║         ORDER SUMMARY                ║");
-        System.out.println(  "  ╠══════════════════════════════════════╣");
+        System.out.println(  "  ╠══════════════════════════════════════╣\n");
 
         if (items.isEmpty()) {
             System.out.println("  ║  ( empty )                           ║");
         } else {
             for (int i = items.size() - 1; i >= 0; i--) {
                 OrderItem item = items.get(i);
-                System.out.printf("  ║  %-27s $%5.2f  ║%n", item.getName(), item.calculatePrice());
+                System.out.printf("%s %n", item.toString());
+
             }
         }
 
-        System.out.println("  ╠══════════════════════════════════════╣");
+        System.out.println("\n  ╠══════════════════════════════════════╣");
         System.out.printf( "  ║  %-28s $%5.2f ║%n", "TOTAL", currentOrder.calculateTotal());
         System.out.println("  ╚══════════════════════════════════════╝\n");
     }
@@ -278,6 +279,10 @@ public class UserInterface {
 
         while(ordering) {
             System.out.println("\n -----------------------[ MEATS ]-----------------------");
+            System.out.println("                       Prices by size:");
+            System.out.println("            8\"  - Regular: $1.00 | Extra: +$0.50");
+            System.out.println("            12\" - Regular: $2.00 | Extra: +$1.00");
+            System.out.println("            16\" - Regular: $3.00 | Extra: +$1.50\n");
             System.out.println("[0] Done adding Meats");
             System.out.println("[1] Pepperoni");
             System.out.println("[2] Sausage");
@@ -334,6 +339,10 @@ public class UserInterface {
 
         while(ordering) {
             System.out.println("\n -----------------------[ CHEESES ]-----------------------");
+            System.out.println("                       Prices by size:");
+            System.out.println("           8\"  - Regular: $0.75 | Extra: +$0.30");
+            System.out.println("           12\" - Regular: $1.50 | Extra: +$0.60");
+            System.out.println("           16\" - Regular: $2.25 | Extra: +$0.90\n");
             System.out.println("[0] Done adding Cheese");
             System.out.println("[1] Mozzarella");
             System.out.println("[2] Parmesan");
@@ -506,7 +515,7 @@ public class UserInterface {
     private boolean addPremiumToppingExtraPrompt(Pizza pizza, PremiumTopping selected) {
         boolean validExtra = false;
         while (!validExtra) {
-            System.out.println("Extra " + selected.getName() + "? \n [1] Yes  \n [0] No");
+            System.out.println("Extra " + selected.getName() + "? \n[1] Yes  \n[0] No");
             System.out.print("Your choice: ");
             String extraChoice = scanner.nextLine();
 
@@ -528,7 +537,7 @@ public class UserInterface {
 
         boolean validMore = false;
         while (!validMore) {
-            System.out.println("\nAdd another? \n [1] Yes  \n [0] No");
+            System.out.println("\nAdd another? \n[1] Yes  \n[0] No");
             System.out.print("Your choice: ");
             String addMore = scanner.nextLine().trim();
 
@@ -561,9 +570,9 @@ public class UserInterface {
 
             System.out.println(" -----------------------[ DRINKS ]-----------------------");
             System.out.println("Select Size: ");
-            System.out.println("[1] Small");
-            System.out.println("[2] Medium");
-            System.out.println("[3] Large");
+            System.out.println("[1] Small - $2.00");
+            System.out.println("[2] Medium - $2.50");
+            System.out.println("[3] Large - $3.00");
             System.out.print("Your choice: ");
             String choice = scanner.nextLine();
 

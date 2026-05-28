@@ -42,10 +42,7 @@ public class GarlicKnots implements OrderItem {
     }
 
     public String toString() {
-        return String.format(
-                "🥐 Garlic Knots | count: %s | Flavor: %s | Total: $%.2f",
-                count, flavor, calculatePrice()
-        );
+        return String.format("🥐 Garlic Knots | count: %s | Flavor: %s | Total: $%.2f", count, flavor, calculatePrice());
     }
 
     @Override

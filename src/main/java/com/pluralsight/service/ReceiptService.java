@@ -29,7 +29,7 @@ public class ReceiptService {
             writer.println("        P I Z Z A - L I C I O U S");
             writer.println("          Thank you for your order!");
             writer.println("==========================================");
-            writer.println("Date: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm:ss")));
+            writer.println("Date/Time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm:ss")));
             writer.println("------------------------------------------");
 
             List<OrderItem> items = order.getItems();
