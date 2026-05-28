@@ -48,5 +48,10 @@ public class Drink implements OrderItem{
         );
     }
 
+    @Override
+    public String getName() {
+        return "Drink";
+    }
+
 
 }

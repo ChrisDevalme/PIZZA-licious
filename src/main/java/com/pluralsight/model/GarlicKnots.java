@@ -45,4 +45,9 @@ public class GarlicKnots implements OrderItem{
                 count, flavor, calculatePrice()
         );
     }
+
+    @Override
+    public String getName() {
+        return "Garlic Knots";
+    }
 }

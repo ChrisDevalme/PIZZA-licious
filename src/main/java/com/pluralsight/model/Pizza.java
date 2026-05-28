@@ -49,6 +49,11 @@ public class Pizza implements OrderItem{
         return total;
     }
 
+    @Override
+    public String getName() {
+        return "Pizza";
+    }
+
     private double getBasePrice() {
         switch (size) {
             case "8":  return 8.50;

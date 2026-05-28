@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import com.pluralsight.model.Drink;
-import com.pluralsight.model.GarlicKnots;
-import com.pluralsight.model.Order;
-import com.pluralsight.model.Pizza;
+import com.pluralsight.model.*;
 import com.pluralsight.model.topping.*;
 import com.pluralsight.service.ReceiptService;
 
@@ -13,11 +10,9 @@ import java.util.Scanner;
 public class UserInterface {
     private Scanner scanner;
     private Order currentOrder;
-    private ReceiptService receiptService;
 
     public UserInterface(){
         scanner = new Scanner(System.in);
-        receiptService = new ReceiptService();
     }
 
     public void logo() {
@@ -85,6 +80,7 @@ public class UserInterface {
                     break;
                 case "4":
                     processCheckout();
+                    ordering = false;
                     break;
                 case "0":
                     ordering = false;
@@ -122,6 +118,64 @@ public class UserInterface {
         currentOrder = null;
         System.out.println("\nOrder canceled!\n");
         System.out.println("==============================================================");
+    }
+    private void printOrderSummary() {
+        List<OrderItem> items = currentOrder.getItems();
+
+        System.out.println("\n  ╔══════════════════════════════════════╗");
+        System.out.println(  "  ║         ORDER SUMMARY                ║");
+        System.out.println(  "  ╠══════════════════════════════════════╣");
+
+        if (items.isEmpty()) {
+            System.out.println("  ║  ( empty )                           ║");
+        } else {
+            for (int i = items.size() - 1; i >= 0; i--) {
+                OrderItem item = items.get(i);
+                System.out.printf("  ║  %-27s $%5.2f  ║%n", item.getName(), item.calculatePrice());
+            }
+        }
+
+        System.out.println("  ╠══════════════════════════════════════╣");
+        System.out.printf( "  ║  %-28s $%5.2f ║%n", "TOTAL", currentOrder.calculateTotal());
+        System.out.println("  ╚══════════════════════════════════════╝\n");
+    }
+    private void confirmOrder() {
+        ReceiptService recipt = new ReceiptService();
+        recipt.saveReceipt(currentOrder);
+
+        System.out.println("  ╔══════════════════════════════════════╗");
+        System.out.println("  ║       ORDER CONFIRMED!  🍕           ║");
+        System.out.println("  ║   Your receipt has been saved.       ║");
+        System.out.println("  ║   Thanks for ordering PIZZALICIOUS!  ║");
+        System.out.println("  ╚══════════════════════════════════════╝\n");
+
+        currentOrder = null;
+    }
+    private void processCheckout() {
+
+        printOrderSummary();
+
+        boolean valid = false;
+        while (!valid) {
+            System.out.println("[1] Confirm Order");
+            System.out.println("[0] Cancel Order");
+            System.out.print("Your choice: ");
+
+            String choice = scanner.nextLine().trim();
+
+            switch (choice) {
+                case "1":
+                    confirmOrder();
+                    valid = true;
+                    break;
+                case "0":
+                    cancelOrder();
+                    valid = true;
+                    break;
+                default:
+                    System.out.println(" Invalid input. Please enter 1 or 0. \n");
+            }
+        }
     }
 
     // Pizza Order Logic
@@ -416,27 +470,8 @@ public class UserInterface {
     }
     private boolean addFreeToppingPrompt(Pizza pizza, Topping selected) {
 
-        boolean validExtra = false;
-        while (!validExtra) {
-            System.out.println("Extra " + selected.getName() + "? \n[1] Yes  \n[0] No");
-            System.out.print("Your choice: ");
-            String extraChoice = scanner.nextLine().trim();
-
-            switch (extraChoice) {
-                case "1":
-                    selected.setExtra(true);
-                    validExtra = true;
-                    break;
-                case "0":
-                    selected.setExtra(false);
-                    validExtra = true;
-                    break;
-                default:
-                    System.out.println("Invalid input. Please enter 1 or 0.");
-            }
-        }
         pizza.addTopping(selected);
-        System.out.println("✓ Added: " + selected.getName() + (selected.isExtra() ? " (extra)" : " (single)") + " — free");
+        System.out.println("✓ Added: " + selected.getName());
 
 
         boolean validMore = false;
@@ -501,7 +536,6 @@ public class UserInterface {
         }
         return false;
     }
-
 
     // Drink Order Logic
     public void processAddDrink() {
@@ -680,10 +714,5 @@ public class UserInterface {
         }
 
     }
-
-    public void processCheckout(){
-        System.out.println("Checking out!");
-    }
-
 
 }
