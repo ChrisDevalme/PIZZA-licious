@@ -1,4 +1,6 @@
-package com.pluralsight.model.topping;
+package com.pluralsight.model.topping.regularTopping;
+
+import com.pluralsight.model.topping.Topping;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,9 @@
-package com.pluralsight.model;
+package com.pluralsight.model.products;
 
 
-public class Drink implements OrderItem{
+import com.pluralsight.model.OrderItem;
+
+public class Drink implements OrderItem {
 
     private String flavor;
     private String size;

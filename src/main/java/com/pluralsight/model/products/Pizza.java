@@ -1,11 +1,12 @@
-package com.pluralsight.model;
+package com.pluralsight.model.products;
 
+import com.pluralsight.model.OrderItem;
 import com.pluralsight.model.topping.Topping;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza implements OrderItem{
+public class Pizza implements OrderItem {
     private String size;
     private String crust;
     private boolean stuffedCrust;

@@ -1,9 +1,11 @@
-package com.pluralsight.model.topping;
+package com.pluralsight.model.topping.regularTopping;
+
+import com.pluralsight.model.topping.Topping;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegularTopping extends Topping{
+public class RegularTopping extends Topping {
 
     private static final List<RegularTopping> OPTIONS = new ArrayList<>();
 

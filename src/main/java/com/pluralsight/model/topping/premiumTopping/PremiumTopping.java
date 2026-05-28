@@ -1,6 +1,7 @@
-package com.pluralsight.model.topping;
+package com.pluralsight.model.topping.premiumTopping;
 
 
+import com.pluralsight.model.topping.Topping;
 
 public abstract class PremiumTopping extends Topping {
 
