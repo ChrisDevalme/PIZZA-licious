@@ -1,6 +1,6 @@
 package com.pluralsight.model.products;
 
-import com.pluralsight.model.OrderItem;
+import com.pluralsight.model.order.OrderItem;
 
 public class GarlicKnots implements OrderItem {
     private String flavor;

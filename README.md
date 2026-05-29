@@ -7,40 +7,6 @@ PIZZALICIOUS is a Java-based command-line pizza ordering application that allows
 The project was designed with a strong focus on object-oriented programming principles such as abstraction, inheritance, interfaces, composition, and separation of concerns. The system uses a scalable architecture that makes it easy to extend with future features such as databases, delivery systems, online ordering, or graphical interfaces.
 
 ---
-
-# Features
-
-## Ordering System
-
-* Create a new order
-* Cancel an order
-* Checkout and confirm orders
-* View live order summary while ordering
-
-## Pizza Customization
-
-* Multiple pizza sizes
-* Multiple crust styles
-* Stuffed crust option
-* Premium toppings with extra serving option
-* Regular toppings
-* Sauces and side toppings
-* Dynamic pizza pricing calculation
-
-## Additional Menu Items
-
-* Drinks with multiple sizes and flavors
-* Garlic knots with different counts and flavors
-
-## Receipt System
-
-* Automatically creates receipt files
-* Timestamped receipt naming
-* Formatted order summaries
-* Saves receipts locally inside a receipts folder
-
----
-
 # User Stories
 
 * As a user, I want to create a new order so that I can begin building my meal.
@@ -54,9 +20,9 @@ The project was designed with a strong focus on object-oriented programming prin
 
 ---
 
-# Setup
+## Setup
 
-## Prerequisites
+### Prerequisites
 
 * Java 17
 * IntelliJ IDEA
@@ -64,7 +30,7 @@ The project was designed with a strong focus on object-oriented programming prin
 
 ---
 
-# Running the Application in IntelliJ
+### Running the Application in IntelliJ
 
 1. Open IntelliJ IDEA.
 2. Select **Open** and navigate to the project folder.
@@ -75,7 +41,7 @@ The project was designed with a strong focus on object-oriented programming prin
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 * Java 17
 
@@ -85,57 +51,10 @@ The project was designed with a strong focus on object-oriented programming prin
 
 
 ![May-28-2026 14-22-02.gif](assets/May-28-2026%2014-22-02.gif)
-# Project Structure
-
-```text
-com.pluralsight
-├── Main.java
-├── ui
-│   └── UserInterface.java
-├── model
-│   ├── Order.java
-│   ├── OrderItem.java
-│   ├── Pizza.java
-│   ├── Drink.java
-│   ├── GarlicKnots.java
-│   ├── signature
-│   │   ├── MargheritaPizza.java
-│   │   └── VeggiePizza.java
-│   └── topping
-│       ├── Topping.java
-│       ├── PremiumTopping.java
-│       ├── MeatTopping.java
-│       ├── CheeseTopping.java
-│       ├── RegularTopping.java
-│       ├── SauceTopping.java
-│       └── SideTopping.java
-└── service
-    └── ReceiptService.java
-```
 
 ---
 
-# Object-Oriented Programming Concepts Used
-
-## Interfaces
-
-The `OrderItem` interface allows pizzas, drinks, and garlic knots to behave uniformly inside an order.
-
-## Inheritance
-
-The topping system uses inheritance to group premium and regular toppings while reducing duplicated pricing logic.
-
-## Composition
-
-Pizzas are composed of multiple toppings stored inside collections.
-
-## Polymorphism
-
-The order system stores all products using `List<OrderItem>` and dynamically calls pricing methods depending on the item type.
-
----
-
-# Future Improvements
+## Future Improvements
 
 * Signature pizzas
 * Delivery system
@@ -148,7 +67,7 @@ The order system stores all products using `List<OrderItem>` and dynamically cal
 
 ---
 
-# Resources
+## Resources
 
 * Java Documentation
 * IntelliJ IDEA Documentation
@@ -158,13 +77,13 @@ The order system stores all products using `List<OrderItem>` and dynamically cal
 
 ---
 
-# Team Members
+## Team Members
 
 * **Christopher Devalme** — Designed and built the full PIZZALICIOUS ordering system including architecture, ordering flow, pricing logic, toppings system, and receipt persistence.
 
 ---
 
-# Thanks
+## Thanks
 
 * Thank you to Raymond Maroun for continuous support and guidance throughout the project.
 * Thank you to classmates and peers for feedback and collaboration during development.

@@ -1,4 +1,4 @@
-package com.pluralsight.model;
+package com.pluralsight.model.order;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

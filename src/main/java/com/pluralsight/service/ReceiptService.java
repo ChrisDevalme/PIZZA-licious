@@ -1,7 +1,7 @@
 package com.pluralsight.service;
 
-import com.pluralsight.model.Order;
-import com.pluralsight.model.OrderItem;
+import com.pluralsight.model.order.Order;
+import com.pluralsight.model.order.OrderItem;
 
 import java.io.File;
 import java.io.PrintWriter;

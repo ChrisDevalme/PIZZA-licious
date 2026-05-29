@@ -1,6 +1,6 @@
 package com.pluralsight.model.products;
 
-import com.pluralsight.model.OrderItem;
+import com.pluralsight.model.order.OrderItem;
 import com.pluralsight.model.topping.Topping;
 
 import java.util.ArrayList;
