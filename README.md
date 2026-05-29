@@ -56,12 +56,9 @@ The project was designed with a strong focus on object-oriented programming prin
 
 ## Future Improvements
 
-* Signature pizzas
-* Delivery system
 * Database integration
 * User accounts
 * GUI or web frontend
-* Online ordering system
 * Inventory management
 * Admin dashboard
 
