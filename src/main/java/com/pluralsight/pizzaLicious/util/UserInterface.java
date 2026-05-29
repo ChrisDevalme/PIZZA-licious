@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
+
     private Scanner scanner;
     private Order currentOrder;
 
@@ -100,7 +101,6 @@ public class UserInterface {
             }
         }
     }
-
     private static void printOrderMenu() {
         System.out.println(
                 "=====================  Order Menu =====================\n" +
@@ -112,11 +112,9 @@ public class UserInterface {
                         "Your choice:"
         );
     }
-
     private void createNewOrder() {
         currentOrder = new Order();
     }
-
     public void printOrder() {
         if (!currentOrder.getItems().isEmpty()) {
             System.out.println("======================= Order ======================= ");
@@ -126,13 +124,11 @@ public class UserInterface {
             System.out.println("                      ( Emtpy )                         ");
         }
     }
-
     private void cancelOrder() {
         currentOrder = null;
         System.out.println("\nOrder canceled!\n");
         System.out.println("==============================================================");
     }
-
     private void printOrderSummary() {
         List<OrderItem> items = currentOrder.getItems();
 
@@ -154,11 +150,9 @@ public class UserInterface {
         System.out.printf("  ║  %-28s $%5.2f ║%n", "TOTAL", currentOrder.calculateTotal());
         System.out.println("  ╚══════════════════════════════════════╝\n");
     }
-
     private void confirmOrder() {
         ReceiptService recipt = new ReceiptService();
         recipt.saveReceipt(currentOrder);
-
         System.out.println("  ╔══════════════════════════════════════╗");
         System.out.println("  ║       ORDER CONFIRMED!  🍕           ║");
         System.out.println("  ║   Your receipt has been saved.       ║");
@@ -167,7 +161,6 @@ public class UserInterface {
 
         currentOrder = null;
     }
-
     private void processCheckout() {
 
         printOrderSummary();

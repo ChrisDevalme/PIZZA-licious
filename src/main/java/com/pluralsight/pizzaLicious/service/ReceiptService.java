@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
 public class ReceiptService {
 
     public void saveReceipt(Order order) {
@@ -26,7 +27,15 @@ public class ReceiptService {
             PrintWriter writer = new PrintWriter(filePath);
 
             writer.println("==========================================");
-            writer.println("        P I Z Z A - L I C I O U S");
+            writer.println(" (   (       )   )        (    (         (       )        (     \n" +
+                    " )\\ ))\\ ) ( /(( /(  (     )\\ ) )\\ )  (   )\\ ) ( /(        )\\ )  \n" +
+                    "(()/(()/( )\\())\\()) )\\   (()/((()/(  )\\ (()/( )\\())    ( (()/(  \n" +
+                    " /(_))(_)|(_)((_)((((_)(  /(_))/(_)|((_) /(_)|(_)\\     )\\ /(_)) \n" +
+                    "(_))(_))  _((_)((_)\\ _ )\\(_)) (_)) )\\___(_))   ((_) _ ((_|_))   \n" +
+                    "| _ \\_ _||_  /_  /(_)_\\(_) |  |_ _((/ __|_ _| / _ \\| | | / __|  \n" +
+                    "|  _/| |  / / / /  / _ \\ | |__ | | | (__ | | | (_) | |_| \\__ \\  \n" +
+                    "|_| |___|/___/___|/_/ \\_\\|____|___| \\___|___| \\___/ \\___/|___/  \n" +
+                    "                                                                " );
             writer.println("          Thank you for your order!");
             writer.println("==========================================");
             writer.println("Date/Time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm:ss")));
