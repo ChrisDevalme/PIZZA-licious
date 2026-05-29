@@ -1,4 +1,4 @@
-package com.pluralsight.model.order;
+package com.pluralsight.pizzaLicious.model.order;
 
 public interface OrderItem {
     double calculatePrice();

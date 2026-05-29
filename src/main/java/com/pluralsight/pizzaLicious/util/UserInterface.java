@@ -1,20 +1,19 @@
-package com.pluralsight.util;
+package com.pluralsight.pizzaLicious.util;
 
-import com.pluralsight.model.order.Order;
-import com.pluralsight.model.order.OrderItem;
-import com.pluralsight.model.products.*;
-import com.pluralsight.model.topping.*;
-import com.pluralsight.model.topping.premiumTopping.CheeseTopping;
-import com.pluralsight.model.topping.premiumTopping.MeatTopping;
-import com.pluralsight.model.topping.premiumTopping.PremiumTopping;
-import com.pluralsight.model.topping.regularTopping.RegularTopping;
-import com.pluralsight.model.topping.regularTopping.SauceTopping;
-import com.pluralsight.model.topping.regularTopping.SideTopping;
-import com.pluralsight.service.ReceiptService;
+import com.pluralsight.pizzaLicious.model.order.Order;
+import com.pluralsight.pizzaLicious.model.order.OrderItem;
+import com.pluralsight.pizzaLicious.model.products.*;
+import com.pluralsight.pizzaLicious.model.topping.Topping;
+import com.pluralsight.pizzaLicious.model.topping.premiumTopping.CheeseTopping;
+import com.pluralsight.pizzaLicious.model.topping.premiumTopping.MeatTopping;
+import com.pluralsight.pizzaLicious.model.topping.premiumTopping.PremiumTopping;
+import com.pluralsight.pizzaLicious.model.topping.regularTopping.RegularTopping;
+import com.pluralsight.pizzaLicious.model.topping.regularTopping.SauceTopping;
+import com.pluralsight.pizzaLicious.model.topping.regularTopping.SideTopping;
+import com.pluralsight.pizzaLicious.service.ReceiptService;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.SimpleTimeZone;
 
 public class UserInterface {
     private Scanner scanner;

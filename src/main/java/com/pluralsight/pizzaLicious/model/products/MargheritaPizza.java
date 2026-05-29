@@ -1,7 +1,8 @@
-package com.pluralsight.model.products;
+package com.pluralsight.pizzaLicious.model.products;
 
-import com.pluralsight.model.topping.premiumTopping.*;
-import com.pluralsight.model.topping.regularTopping.*;
+import com.pluralsight.pizzaLicious.model.topping.premiumTopping.*;
+import com.pluralsight.pizzaLicious.model.topping.regularTopping.*;
+
 
 public class MargheritaPizza extends Pizza {
 

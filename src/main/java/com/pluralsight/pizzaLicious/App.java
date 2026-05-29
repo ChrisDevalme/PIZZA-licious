@@ -1,6 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.pizzaLicious;
 
-import com.pluralsight.util.UserInterface;
+import com.pluralsight.pizzaLicious.util.UserInterface;
 
 public class App {
     public static void main(String[] args) {

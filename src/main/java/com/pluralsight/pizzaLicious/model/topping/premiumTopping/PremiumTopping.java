@@ -1,7 +1,7 @@
-package com.pluralsight.model.topping.premiumTopping;
+package com.pluralsight.pizzaLicious.model.topping.premiumTopping;
 
 
-import com.pluralsight.model.topping.Topping;
+import com.pluralsight.pizzaLicious.model.topping.Topping;
 
 public abstract class PremiumTopping extends Topping {
 

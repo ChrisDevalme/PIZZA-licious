@@ -1,4 +1,4 @@
-package com.pluralsight.model.topping.premiumTopping;
+package com.pluralsight.pizzaLicious.model.topping.premiumTopping;
 
 import java.util.ArrayList;
 import java.util.List;

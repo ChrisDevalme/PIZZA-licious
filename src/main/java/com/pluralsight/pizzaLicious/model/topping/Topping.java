@@ -1,4 +1,4 @@
-package com.pluralsight.model.topping;
+package com.pluralsight.pizzaLicious.model.topping;
 
 public abstract class Topping {
 

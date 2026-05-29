@@ -1,7 +1,7 @@
-package com.pluralsight.model.products;
+package com.pluralsight.pizzaLicious.model.products;
 
 
-import com.pluralsight.model.order.OrderItem;
+import com.pluralsight.pizzaLicious.model.order.OrderItem;
 
 public class Drink implements OrderItem {
 

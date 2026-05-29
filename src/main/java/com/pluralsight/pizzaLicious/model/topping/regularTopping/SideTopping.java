@@ -1,6 +1,6 @@
-package com.pluralsight.model.topping.regularTopping;
+package com.pluralsight.pizzaLicious.model.topping.regularTopping;
 
-import com.pluralsight.model.topping.Topping;
+import com.pluralsight.pizzaLicious.model.topping.Topping;
 
 import java.util.ArrayList;
 import java.util.List;
